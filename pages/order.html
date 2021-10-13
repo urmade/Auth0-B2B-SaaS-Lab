@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pizza0 for Business</title>
+        <link rel="stylesheet" href="/static/index.css">
+    </head>
+    <body>
+        <header>
+            <p>Pizza0</p>
+            <p>On Behalf of: <span id="org_name">N/A</span></p>
+            <a href="/logout">Log out</a>
+        </header>
+        <section>
+            <div class="box">
+                <img src="https://media.istockphoto.com/photos/mini-salami-pizza-on-a-dark-wooden-background-top-view-picture-id639963606?k=20&m=639963606&s=612x612&w=0&h=LSevcUTvX3N-F2Suj000a-s1qF4uaocsr4RcG5d0aS0=">
+                <h2>Small Pizza</h2>
+                <div class="btn">Order now</div>
+            </div>
+            <div class="box">
+                <img src="https://www.edeka.de/media/01-rezeptbilder/rezeptbilder-i-p/rez-edeka-pizza-prosciutto-rezept-i-p.jpg?imwidth=960&imdensity=1">
+                <h2>Large Pizza</h2>
+                <div class="btn">Order now</div>
+            </div>
+            <div class="box">
+                <img src="https://www.itspizzatime.eu/herne/pizza_1/herne/res/images/menu_pizza_1.jpg">
+                <h2>Hackathon Pizza</h2>
+                <div class="btn">Order now</div>
+            </div>
+        </section>
+        <script>
+            function fetchOrgName() {
+                fetch("/fetchOrg").then(res => {
+                    if(res.status === 200) {
+                        res.text().then(t => {
+                        document.querySelector("#org_name").innerHTML = t;
+                    })
+                    }
+                }) 
+            }
+            fetchOrgName();
+        </script>
+    </body>
+</html>
