@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const dotenv = require("dotenv");
 
 
 app.use("/static", express.static(path.join(__dirname, "static")));
@@ -9,14 +10,14 @@ const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 
 
-
+dotenv.config();
 const config = {
     authRequired: false,
     auth0Logout: true,
-    secret: 'xKgqzPI@ig964@BVYc',
+    secret: process.env.SECRET,
     baseURL: 'http://localhost:3001',
-    clientID: 'JXn4nukDikXYWKYUZNbYEM5YB1d4jtkY',
-    issuerBaseURL: 'https://tu-playground.eu.auth0.com',
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: process.env.ISSUER_BASE_ID,
 };
 
 app.use(auth(config));
@@ -38,7 +39,7 @@ app.get("/fetchOrg", requiresAuth(), (req, res) => {
         }
         else res.send(req.oidc.user.org_id);
     }
-    else res.status(403).send();
+    else res.status(403).send("N/A");
 })
 app.get("/callback", (req, res) => {
     res.redirect("/");
