@@ -8,7 +8,7 @@
     <body>
         <header>
             <p>Pizza0</p>
-            <p>On Behalf of: <span id="org_name">N/A</span></p>
+            <p><span id="org_name"></span></p>
             <a href="/logout">Log out</a>
         </header>
         <section>
@@ -33,7 +33,7 @@
                 fetch("/fetchOrg").then(res => {
                     if(res.status === 200) {
                         res.text().then(t => {
-                        document.querySelector("#org_name").innerHTML = t;
+                            if(t !== "") document.querySelector("#org_name").innerHTML = "On Behalf of: " + t;
                     })
                     }
                 }) 
