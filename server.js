@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const dotenv = require("dotenv");
+const apiHandler = require("./util/api");
 
 
 app.use("/static", express.static(path.join(__dirname, "static")));
@@ -11,6 +12,7 @@ const { requiresAuth } = require('express-openid-connect');
 
 
 dotenv.config();
+
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -31,16 +33,10 @@ app.get('/', (req, res) => {
 app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
-app.get("/fetchOrg", requiresAuth(), (req, res) => {
-    if (req.oidc.isAuthenticated()) {
-        if (req.oidc.user && req.oidc.user["https://pizza0.net/organization"]) {
-            if(req.oidc.user["https://pizza0.net/license"]) res.send(req.oidc.user["https://pizza0.net/organization"] + "(" + req.oidc.user["https://pizza0.net/license"] + ")");
-            else res.send(req.oidc.user["https://pizza0.net/organization"]);
-        }
-        else res.send(req.oidc.user.org_id);
-    }
-    else res.status(403).send("N/A");
-})
+
+app.use("/api", apiHandler);
+
+
 app.get("/callback", (req, res) => {
     res.redirect("/");
 })

@@ -66,3 +66,9 @@ a, .btn {
     max-height: 150px;
     max-width: 150px;
 }
+.messageBox {
+    padding: 10px;
+    margin: 20px;
+    width: 50%;
+    text-align: center;
+}

@@ -15,22 +15,23 @@
             <div class="box">
                 <img src="https://media.istockphoto.com/photos/mini-salami-pizza-on-a-dark-wooden-background-top-view-picture-id639963606?k=20&m=639963606&s=612x612&w=0&h=LSevcUTvX3N-F2Suj000a-s1qF4uaocsr4RcG5d0aS0=">
                 <h2>Small Pizza</h2>
-                <div class="btn">Order now</div>
+                <div class="btn" onclick="orderPizza('small')">Order now</div>
             </div>
             <div class="box">
                 <img src="https://www.edeka.de/media/01-rezeptbilder/rezeptbilder-i-p/rez-edeka-pizza-prosciutto-rezept-i-p.jpg?imwidth=960&imdensity=1">
-                <h2>Large Pizza</h2>
-                <div class="btn">Order now</div>
+                <h2>Medium Pizza</h2>
+                <div class="btn" onclick="orderPizza('medium')">Order now</div>
             </div>
             <div class="box">
                 <img src="https://www.itspizzatime.eu/herne/pizza_1/herne/res/images/menu_pizza_1.jpg">
-                <h2>Hackathon Pizza</h2>
-                <div class="btn">Order now</div>
+                <h2>Large Pizza</h2>
+                <div class="btn" onclick="orderPizza('large')">Order now</div>
             </div>
+            <div class="messageBox"></div>
         </section>
         <script>
             function fetchOrgName() {
-                fetch("/fetchOrg").then(res => {
+                fetch("/api/organization").then(res => {
                     if(res.status === 200) {
                         res.text().then(t => {
                             if(t !== "") document.querySelector("#org_name").innerHTML = "On Behalf of: " + t;
@@ -39,6 +40,21 @@
                 }) 
             }
             fetchOrgName();
+
+            function orderPizza(type) {
+                fetch("/api/order?type="+type).then(res => {
+                    const messageBox = document.querySelector(".messageBox");
+                    if(res.status === 200) {
+                        messageBox.innerHTML = `Your ${type} pizza was successfully ordered!`;
+                        messageBox.style.backgroundColor = "lightgreen";
+                    }
+                    else {
+                        messageBox.innerHTML = `It seems like you don't have the rights to order a ${type} pizza!`;
+                        messageBox.style.backgroundColor = "lightcoral";
+                    }
+
+                })
+            }
         </script>
     </body>
 </html>
