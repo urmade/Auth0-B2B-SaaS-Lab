@@ -32,4 +32,4 @@ app.get("/callback", (req, res) => {
 
 
 
-app.listen(3000, () => { console.info("Server is running") });
+app.listen(process.env.PORT ||  3000, () => { console.info("Server is running") });

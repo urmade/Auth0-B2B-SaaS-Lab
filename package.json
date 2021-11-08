@@ -1,18 +1,19 @@
 {
-  "name": "b2b_saas_auth0",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "jwks-rsa": "^2.0.4",
-    "node-fetch": "2.0.0"
-  }
+    "name": "b2b_saas_auth0",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm i && node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "jwks-rsa": "^2.0.4",
+        "node-fetch": "2.0.0"
+    }
 }
