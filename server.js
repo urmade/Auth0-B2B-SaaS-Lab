@@ -20,6 +20,9 @@ const config = {
     baseURL: 'http://localhost:3000',
     clientID: process.env.CLIENT_ID,
     issuerBaseURL: process.env.ISSUER_BASE_ID,
+    authorizationParams: {
+        prompt: "login"
+    }
 };
 
 app.use(auth(config));
