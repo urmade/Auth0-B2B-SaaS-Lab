@@ -1,13 +1,10 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const dotenv = require("dotenv");
 const apiHandler = require("./util/api");
 
 
 app.use("/static", express.static(path.join(__dirname, "static")));
-
-dotenv.config();
 
 //TODO: Use Auth0 as a middleware for our project (Hint: Look at the quickstart tutorial)
 
