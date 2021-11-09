@@ -16,4 +16,4 @@ They have already sent you their baseline application in this repository. It con
 
 Happy coding and happy securing!
 
-*Disclaimer: This Auth0 lab is meant to be a guided exercise. We will tackle all the challenges together with you having a chance to play around with the technology yourself. If at any point you need additional help or if you want to go through this lab on your own, you can find additional help on https://lab.pizza0.net*
+*Disclaimer: This Auth0 lab is meant to be a guided exercise. We will tackle all the challenges together with you having a chance to play around with the technology yourself. If at any point you need additional help or if you want to go through this lab on your own, you can find additional help on http://lab.pizza0.net*
