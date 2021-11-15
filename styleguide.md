@@ -1,4 +1,4 @@
-Pizza0 Logo: http://lab.pizza0.net/static/pizza.jpeg
+Pizza0 Logo: https://pizza0lab.s3.eu-central-1.amazonaws.com/pizza.jpeg
 
 Pizza0 Primary color: #EB5424
 
